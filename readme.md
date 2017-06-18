@@ -4,4 +4,4 @@
 developer
 <br/>Link: <a href="https://mlab.com/databases/book_test">https://mlab.com/databases/book_test</a>
 <br/>Login: selsky_mironov   
-<br/>password: 10kopeek
+<br/>password: 10******

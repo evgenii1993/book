@@ -1,0 +1,23 @@
+<form (submit)="addBook($event)">
+    <input type="text" name="title" [(ngModel)]="title" placeholder="add book...">
+</form>
+
+
+
+<div>
+    <table>
+        <tr *ngFor="let book of books">
+            <td>
+                <input (click)="updateStatus(book)" [checked]="book.status" type="checkbox">
+            </td>
+            <td>
+                {{book.title}}
+            </td>
+            <td>
+                <button (click)="deleteBook(book._id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

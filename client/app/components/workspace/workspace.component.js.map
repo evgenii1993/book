@@ -1,0 +1,1 @@
+{"version":3,"file":"workspace.component.js","sourceRoot":"","sources":["workspace.component.ts"],"names":[],"mappings":";;;;;;;;AAAA,sCAA0C;AAY1C,IAAa,SAAS;IAAtB;IAEA,CAAC;IAAD,gBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,SAAS;IANrB,gBAAS,CAAC;QACP,QAAQ,EAAE,MAAM,CAAC,EAAE;QACnB,QAAQ,EAAE,WAAW;QACrB,WAAW,EAAE,0BAA0B;KAC1C,CAAC;GAEW,SAAS,CAErB;AAFY,8BAAS"}

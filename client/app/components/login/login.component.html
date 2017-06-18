@@ -1,0 +1,9 @@
+
+<form (submit)="login($event)">
+    <input [(ngModel)]="client.username" required name="username">
+    <input [(ngModel)]="client.password" required name="password">
+    <button type="submit">Login In</button>
+</form>
+<button (click)="test()">
+    TEST
+</button>

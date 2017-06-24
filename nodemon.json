@@ -1,0 +1,13 @@
+{
+  "execMap": {
+    "js": "node",
+    "jsx": "node"
+  },
+  "ext": "js jsx",
+  "ignore": [
+    ".hg",
+    "node_modules",
+    ".idea"
+  ],
+  "verbose": true
+}

@@ -1,19 +1,24 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import routes           from "./routes";
-import { RoutingContext, match } from 'react-router';
+import {StaticRouter, Switch, Route} from 'react-router';
+import AppRoot from '../site/app';
 
 
 module.exports = function(app) {
+    let App = () => (
+            <Switch>
+                <Route path="/test" component={AppRoot}/>
+                <Route path="/" component={AppRoot}/>
+            </Switch>
+        );
 
     app.get('*', (req, res) => {
-        match({ routes: routes, location: req.url }, (err, redirect, props) => {
-
-            if (!props){
-                return res.status(404).end('Not found');
-            }
-            const reactHtml = renderToString(<RoutingContext {...props}/>);
-            res.render('index.ejs', {reactOutput: reactHtml});
-        });
+        let context = {};
+        const reactHtml = renderToString(
+            <StaticRouter context={context}>
+                <App/>
+            </StaticRouter>
+        );
+        res.render('index.ejs', {reactOutput: reactHtml});
     });
 };

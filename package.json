@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "selsky",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -28,7 +28,8 @@
     "react": "^16.0.0-alpha.13",
     "react-dom": "^16.0.0-alpha.13",
     "react-redux": "^5.0.5",
-    "react-router": "1.0.0-rc3",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "redux": "^1.0.0-rc",
     "redux-devtools": "^3.4.0",
     "vinyl-source-stream": "^1.1.0"

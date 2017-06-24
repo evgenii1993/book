@@ -1,20 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
-import { connect }             from 'react-redux';
+import { Link, BrowserRouter } from 'react-router-dom';
 
-@connect(state => ({
-    //meta:   state.meta,
-    staff:   state.staff,
-    news:   state.news,
-    site:   state.site,
-    reviews:state.reviews,
-    price:  state.price,
-    offers: state.offers
-}))
-class AppRoot extends Component {
-    static propTypes = {
-        dispatch: PropTypes.func.isRequired
-    };
+
+
+export default class AppRoot extends Component {
     state = {
         i: 0
     };
@@ -29,12 +19,11 @@ class AppRoot extends Component {
             <div>
                 <h2>React Universal App 4521</h2>
                 <button onClick={this.add}>{this.state.i}++</button>
+                <Link to="/about" replace>About</Link>
             </div>
         );
     }
 }
 if(typeof window !== 'undefined') {
-    ReactDOM.render(<AppRoot dispatch=""/>, document.getElementById('main'));
+    ReactDOM.render(<AppRoot/>, document.getElementById('main'));
 }
-
-export default AppRoot;

@@ -31,7 +31,10 @@ gulp.task('min', ['build'], function () {
 });
 
 gulp.task('watch', ['build'], function () {
-    gulp.watch('./site/**/*.jsx', ['min']);
+    gulp.watch([
+        './site/**/*.jsx',
+        './routes/clientRoutes.jsx'
+    ], ['min']);
 });
 
 

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
-import { Link, BrowserRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import {ClientRoutes} from '../routes/clientRoutes';
 
 
 export default class AppRoot extends Component {
@@ -17,13 +17,16 @@ export default class AppRoot extends Component {
     render() {
         return (
             <div>
-                <h2>React Universal App 4521</h2>
+                <h2>React Universal App</h2>
                 <button onClick={this.add}>{this.state.i}++</button>
-                <Link to="/about" replace>About</Link>
+                <Link to="/about">About</Link>
             </div>
         );
     }
 }
 if(typeof window !== 'undefined') {
-    ReactDOM.render(<AppRoot/>, document.getElementById('main'));
+    ReactDOM.render(
+        <ClientRoutes />,
+        document.getElementById('main')
+    );
 }

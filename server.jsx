@@ -63,13 +63,6 @@ app.get('*', (req, res) => {
     res.end();
 });
 
-// app.listen(port);
-// console.log('Server is Up and Running at Port : ' + port);
-//
-
-// // app.use('/welcome', index);
-// // app.use('/', index);
-//
 app.listen(port, () => {
     console.log("server start port: "+port);
 });

@@ -1,9 +1,8 @@
-import React, {Component, PropTypes} from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component, PropTypes}    from 'react';
+import { Link }                         from 'react-router-dom';
+import { connect }                      from 'react-redux';
 
-
-
-export default class Test extends Component {
+class Test extends Component {
     state = {
         i: 0
     };
@@ -14,6 +13,9 @@ export default class Test extends Component {
     };
 
     render() {
+
+        console.log("test:", this.props.test);
+
         return (
             <div>
                 <h2>React Universal App</h2>
@@ -23,3 +25,6 @@ export default class Test extends Component {
         );
     }
 }
+export default connect(state => ({
+    testStore: state
+}))

@@ -1,6 +1,6 @@
 module.exports = (state = [], action) =>{
     console.log("action: ", action);
-    if(action.type = "ADD"){
+    if(action.type === "ADD"){
         return [
             ...state,
             action.reyload

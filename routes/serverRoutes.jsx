@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import {StaticRouter, Switch, Route} from 'react-router';
-import AppRoot from '../site/app';
-import Test from '../site/components/test/Test';
-
+import {StaticRouter, Switch} from 'react-router';
+import Routes from './Routes';
 import { createStore,
     combineReducers,
     applyMiddleware } from 'redux';
@@ -12,24 +10,13 @@ import rootReducer         from '../site/Reducer/rootReducer';
 
 module.exports = function(app) {
 
-
     const store = createStore(rootReducer);
-    // store.subscribe(() => {
-    //     console.log("subscribe: ", store.getState());
-    // });
-    //
-    // store.dispatch({
-    //     type: "ADD",
-    //     reyload: "simple1"
-    // });
-    // store.dispatch({
-    //     type: "ADD",
-    //     reyload: "simple2"
-    // });
+    store.dispatch({
+        type: "READY"
+    });
     let App = () => (
             <Switch>
-                <Route path="/about" component={Test} type='app' name="test"/>
-                <Route path="/" component={AppRoot} type='app' name="app"/>
+                <Routes />
             </Switch>
         );
     const initialState = store.getState();

@@ -51,12 +51,18 @@ app.use((req, res, next) => {
 
 
 
-// Set up Routes for the application
-require('./routes/coreRoutes')(app);
 
-app.get('/api', defaultService);
+
+app.use('/api/:class/:method', (req, res) => {
+    res.json(defaultService(req.params));
+});
+
+
+// Set up Routes for the application
+require('./routes/serverRoutes')(app);
+
 //Route not found -- Set 404
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
     res.json({
         'route': 'Sorry this page does not exist!'
     });

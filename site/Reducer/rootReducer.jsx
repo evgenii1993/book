@@ -1,10 +1,28 @@
+import request from 'ajax-request';
+
+
 module.exports = (state = [], action) =>{
     console.log("action: ", action);
-    if(action.type === "ADD"){
-        return [
-            ...state,
-            action.reyload
-        ];
+    let result = [];
+    switch (action.type) {
+        case 'ADD':
+            result = [
+                ...state,
+                action.reyload
+            ];
+            break;
+        case 'READY':
+            request({
+                url: '/api/books/getAll',
+                method: 'POST',
+            }, function(err, res, body) {
+                console.log("result: ", res);
+                result = [
+                    ...state,
+                    res
+                ];
+            });
+            break;
     }
-  return state;
+    return result;
 };

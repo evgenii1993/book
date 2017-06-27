@@ -7,11 +7,14 @@ class Test extends Component {
     state = {
         i: 0
     };
+    componentDidMount(){
+        this.props.show();
+    }
     add = () =>{
         this.setState({
             t: this.state.i--
         });
-        this.props.add()
+        this.props.add();
     };
 
     render() {
@@ -42,6 +45,11 @@ export default connect(
             dispatch({
                 type: "ADD",
                 reyload: "simple1"
+            });
+        },
+        show: () => {
+            dispatch({
+                type: "READY"
             });
         }
     })

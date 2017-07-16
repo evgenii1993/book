@@ -3,17 +3,17 @@ import ReactDOMServer from 'react-dom/server';
 import {StaticRouter, Switch} from 'react-router';
 import Routes from './Routes';
 import { createStore,
-    combineReducers,
-    applyMiddleware } from 'redux';
+         combineReducers,
+         applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer         from '../site/Reducer/rootReducer';
 
 module.exports = function(app) {
 
     const store = createStore(rootReducer);
-    store.dispatch({
-        type: "READY"
-    });
+    // store.dispatch({
+    //     type: "READY"
+    // });
     let App = () => (
             <Switch>
                 <Routes />

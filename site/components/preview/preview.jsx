@@ -3,7 +3,7 @@ import { Link }              from 'react-router-dom';
 import { connect }           from 'react-redux';
 
 
-class Test extends Component {
+class Preview extends Component {
     state = {
         i: 0
     };
@@ -54,4 +54,4 @@ export default connect(
             });
         }
     })
-)(Test);
+)(Preview);

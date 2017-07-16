@@ -31,6 +31,9 @@ app.use((req, res, next) => {
         case 'css':
             type = "text/css";
             break;
+        case "woff2":
+            type = "application/font-woff2";
+            break;
         case 'html':
             path = "./admin/" + req.url;
             type = "text/html";

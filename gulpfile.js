@@ -4,7 +4,9 @@ var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var uglify        = require('gulp-uglify');
 var concat        = require('gulp-concat');
-
+var less = require('gulp-less');
+var minifyCSS = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('build', function () {
     return browserify({
@@ -30,13 +32,31 @@ gulp.task('min', ['build'], function () {
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('watch', ['build'], function () {
+gulp.task('watch', ['build', 'less'], function () {
     gulp.watch([
-        './site/**/*.jsx',
-        './routes/clientRoutes.jsx'
+        'site/**/*.jsx',
+        'routes/clientRoutes.jsx'
     ], ['min']);
+
+    gulp.watch([
+        'less/**/*.less'
+    ], ['less']);
 });
 
+
+gulp.task('less', function () {
+    gulp.src([
+        'less/styles.less'
+    ])
+        .pipe(less())
+        // .pipe(autoprefixer({
+        //     browsers: ['last 2 versions'],
+        //     cascade: false
+        // }))
+        .pipe(minifyCSS())
+        .pipe(concat('src/css/style.css'))
+        .pipe(gulp.dest('.'));
+});
 
 
 

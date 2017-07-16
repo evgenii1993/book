@@ -5,12 +5,13 @@ module.exports = (state = [], action) =>{
     console.log("action: ", action);
     let result = [];
     switch (action.type) {
+        // case 'ADD':
+        //     result = [
+        //         ...state,
+        //         action.reyload
+        //     ];
+        //     break;
         case 'ADD':
-            result = [
-                ...state,
-                action.reyload
-            ];
-            break;
         case 'READY':
             request({
                 url: '/api/books/getAll',

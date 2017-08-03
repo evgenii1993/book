@@ -14,3 +14,31 @@ textarea{
   outline: none !important;
   border-radius: 0 !important;
 }
+
+.btn{
+  display: inline-block;
+  position: relative;
+  padding: 3px;
+  margin-right: .1em;
+  text-decoration: none!important;
+  cursor: pointer;
+  text-align: center;
+  zoom: 1;
+  overflow: visible;
+  color: #ffffff;
+  background-color: #3984b8;
+  border: 1px solid transparent;
+  font-size: 13px;
+  transition: background-color 0.3s;
+  box-shadow: 0 1px 2.5px 0 rgba(0, 0, 0, 0.26), 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+
+  &:hover{
+    background-color: #3376a5;
+    color: #FFF;
+  }
+  &:focus,
+  &:active{
+    background-color: #2d6891;
+    color: #FFF;
+  }
+}

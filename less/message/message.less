@@ -1,0 +1,87 @@
+.message{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 260px;
+  z-index: 100;
+  cursor: default;
+
+  &__logo{
+    background: none;
+    display: inline-block;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0 !important;
+    text-align: center;
+    font-size: 36px;
+  }
+
+  &__item{
+    padding: 10px 15px;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0 !important;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    filter: alpha(opacity=95);
+    border-radius: 2px;
+    position: relative;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__inner{
+    width: 220px;
+    text-align: left;
+    margin-left: 12px;
+  }
+  &__close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    border: 0;
+    color: #333;
+  }
+  &__title{
+    font-weight: bold;
+    padding: 0 0 7px 0;
+  }
+}
+
+
+.message__item{
+  &--info{
+    background-color: #a8c9e0;
+    border-color: #a8c9e0;
+    color: #393b3e;
+
+    .message__logo{
+      color: #38749d;
+    }
+  }
+  &--error{
+    background-color: #fac7c8;
+    border-color: #fac7c8;
+    color: #393b3e;
+
+    .message__logo{
+      color: #f48183;
+    }
+  }
+  &--warn{
+    background-color: #f8eab9;
+    border-color: #f8eab9;
+    color: #393b3e;
+
+    .message__logo{
+      color: #e7b917;
+    }
+  }
+}

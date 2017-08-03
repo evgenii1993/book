@@ -1,7 +1,7 @@
 import express          from 'express';
 import path             from 'path';
 import bodyParser       from 'body-parser';
-import defaultService   from './routes/service';
+import defaultService   from './api/service';
 import file             from "fs";
 
 let app = express(),
@@ -19,14 +19,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use((req, res, next) => {
-    let path = "."+req.url,
+    let path = "."+req._parsedUrl.pathname,
         type = '';
-    switch(req.url.split(".").pop()) {
+
+    switch(req._parsedUrl.pathname.split(".").pop()) {
         case 'js':
             type = "text/javascript";
             break;
         case 'ico':
             type = "image/x-icon";
+            break;
+        case 'png':
+            type = "image/png";
+            break;
+        case 'jpg':
+            type = "image/jpeg";
             break;
         case 'css':
             type = "text/css";
@@ -52,19 +59,33 @@ app.use((req, res, next) => {
 });
 
 
-
-
-
-
-app.use('/api/:class/:method', (req, res) => {
-    res.json(defaultService(req.params));
-});
-
-
 // Set up Routes for the application
 require('./routes/serverRoutes')(app);
 
-//Route not found -- Set 404
+
+
+var http = require('http');
+var server = http.createServer();
+var socket_io = require('socket.io');
+server.listen(8080);
+var io = socket_io();
+io.attach(server);
+io.on('connection', function(socket){
+    console.log("Socket connected: " + socket.id);
+    socket.on('action', (action) => {
+        if(action.type === 'server/hello'){
+            console.log('Got hello data!', action.data);
+            socket.emit('action', {type:'message', data:'good day!'});
+        }
+    });
+});
+
+//api
+app.use('/api/:class/:method', (req, res) => {
+    defaultService(req, res, io);
+});
+
+// //Route not found -- Set 404
 app.use('*', (req, res) => {
     res.json({
         'route': 'Sorry this page does not exist!'
@@ -75,3 +96,7 @@ app.use('*', (req, res) => {
 app.listen(port, () => {
     console.log("server start port: "+port);
 });
+
+
+
+

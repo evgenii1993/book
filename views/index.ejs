@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>React Isomorphic Server Side Rendering Example</title>
-    <link href='/src/css/style.css' rel="stylesheet">
+    <link href='/src/css/style.css?v=<%- verCss %>' rel="stylesheet">
   </head>
   <body>
     <!-- reactOutput is the server compiled React Dom Nodes -->
@@ -12,9 +12,9 @@
     </div>
 
     <!-- comment out main.js to ONLY see server side rendering -->
-    <script src="/src/js/scripts.js"></script>
+    <script src="/src/js/scripts.js?v=<%- verJs %>"></script>
     <script>
-      window.__STATE__ = "<%- state %>";
+      window.__STATE__ = <%- state %>;
     </script>
   </body>
 </html>

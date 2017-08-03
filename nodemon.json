@@ -8,7 +8,8 @@
     ".hg",
     "node_modules",
     ".idea",
-    "src"
+    "src",
+    "less"
   ],
   "verbose": true
 }

@@ -4,17 +4,26 @@ import string from "../../language/language";
 //noinspection JSAnnotator
 export default class Form extends Component<{}, Props, State>{
 
+    state = {
+      activeSubmit: true
+    };
     handleSubmit = event => {
         event.preventDefault();
-        let formData = [],
-            field = undefined;
+        let formData = {};
 
-
-        for (field in this.refs) {
+        for (let field in this.refs) {
             formData[field] = this.refs[field].value;
         }
-        console.log("formData: ", formData);
+        this.props.send(formData);
+        // this.setState({
+        //     activeSubmit: false
+        // });
     };
+    // componentWillReceiveProps(){
+    //     this.setState({
+    //         activeSubmit: true
+    //     });
+    // }
     render() {
         let {structure} = this.props,
             fields = [],
@@ -22,7 +31,9 @@ export default class Form extends Component<{}, Props, State>{
                 type: undefined,
                 name: undefined,
                 value: undefined,
-                label: undefined
+                label: undefined,
+                required: undefined,
+                placeholder: undefined
             };
 
         structure.forEach(field => {
@@ -32,7 +43,12 @@ export default class Form extends Component<{}, Props, State>{
                         <div key={field.name} className="col-xs-12">
                             <div className="form-group">
                                 <label htmlFor={"form."+field.name}>{field.label}</label>
-                                <input id={"form."+field.name} ref={field.name} name={field.name} className="form-control"/>
+                                <input required={field.required}
+                                       placeholder={field.placeholder}
+                                       id={"form."+field.name}
+                                       ref={field.name}
+                                       name={field.name}
+                                       className="form-control"/>
                             </div>
                         </div>
                     );
@@ -42,7 +58,12 @@ export default class Form extends Component<{}, Props, State>{
                         <div key={field.name} className="col-xs-12">
                             <div className="form-group">
                                 <label htmlFor={"form."+field.name}>{field.label}</label>
-                                <textarea id={"form."+field.name} ref={field.name} name={field.name} className="form-control"/>
+                                <textarea required={field.required}
+                                          placeholder={field.placeholder}
+                                          id={"form."+field.name}
+                                          ref={field.name}
+                                          name={field.name}
+                                          className="form-control"/>
                             </div>
                         </div>
                     );
@@ -56,7 +77,7 @@ export default class Form extends Component<{}, Props, State>{
                     {fields}
                 </div>
                 <div className="form__buttons">
-                    <button type="submit">
+                    <button className="btn" disabled={!this.state.activeSubmit} type="submit">
                         {string.save}
                     </button>
                 </div>

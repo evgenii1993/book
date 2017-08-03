@@ -5,30 +5,41 @@ import {ClientRoutes}                   from '../routes/clientRoutes';
 import Dialog                           from './components/Dialog/Dialog';
 import Form                             from './components/Form/Form';
 import string                           from "./language/language";
-export default class AppRoot extends Component {
+import { connect }                      from 'react-redux';
+import { send }                         from './Actions/actionsSendData';
+
+
+class AppRoot extends Component {
+
+    sendForm  = data => {
+        this.props.sendForm(data);
+    };
+
     render() {
         let structureForm = [
             {
                 type: 'input',
                 name: 'email',
+                placeholder: string.preview_email_pl,
+                required: true,
                 label: "E-mail: "
             }
         ];
         return (
             <div className="preview">
                 <div className="site-wrapper">
-
                     <div className="site-wrapper-inner">
-
                         <div className="cover-container">
-
                             <div className="masthead clearfix">
                                 <div className="inner">
                                     <h3 className="masthead-brand">Cover</h3>
                                     <ul className="nav masthead-nav">
-                                        <li className="active"><a href="#">Home</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li className="active">
+                                            <Link to="/">Home</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/contact/">Contact</Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -39,7 +50,7 @@ export default class AppRoot extends Component {
                                     {string.preview_text}
                                 </p>
                                 <p className="lead">
-                                    <Link className="btn btn-lg btn-default" to="/app">Learn more</Link>
+                                    <Link className="btn btn-lg btn-default" to="/app/">Learn more</Link>
                                 </p>
                                 <p className="lead">
                                     <a  className="btn btn-lg btn-default"
@@ -60,12 +71,24 @@ export default class AppRoot extends Component {
                     </div>
                 </div>
                 <Dialog ref='preview_dialog' bg={true}>
-                    <Form structure={structureForm}/>
+                    <Form structure={structureForm}
+                          send={this.sendForm}/>
                 </Dialog>
             </div>
         );
     }
 }
+export default connect(
+    state => ({
+        state: state
+    }),
+    dispatch => ({
+        sendForm: (data) => {
+            dispatch(send(data, 'registration', 'add'));
+        }
+    })
+)(AppRoot)
+
 if(typeof window !== 'undefined') {
     ReactDOM.render(
         <ClientRoutes />,

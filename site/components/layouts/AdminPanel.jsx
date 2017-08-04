@@ -4,6 +4,12 @@ import { connect }           from 'react-redux';
 import Login                 from './Login';
 import Message               from '../Message/Message';
 import  * as actionsUser     from '../../Actions/actionsUser';
+import {
+    MenuList,
+    DropDown,
+    MenuButton,
+    MenuItem
+} from '../UI/dropdown/DropDown';
 
 class AdminPanel extends Component {
 
@@ -12,7 +18,6 @@ class AdminPanel extends Component {
     }
 
     render() {
-        console.log("user: ",  this.props.user);
         if(false !== this.props.user) {
             return (
                 <div className="AdminPanel">
@@ -24,8 +29,18 @@ class AdminPanel extends Component {
                             =
                         </a>
                         <a href="#" className="AdminPanel__user-display">
-                            <span className="AdminPanel__user-name">Emma Davis</span>
-                            <img src="/src/img/avatar.png" className="AdminPanel__user-logo"/>
+                            <DropDown>
+                                <MenuButton>
+                                    <span className="AdminPanel__user-name">Emma Davis</span>
+                                    <img src="/src/img/avatar.png" className="AdminPanel__user-logo"/>
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem>111</MenuItem>
+                                    <MenuItem>222</MenuItem>
+                                    <MenuItem>333</MenuItem>
+                                    <MenuItem>444</MenuItem>
+                                </MenuList>
+                            </DropDown>
                         </a>
                     </div>
                     <div className="AdminPanel__main">

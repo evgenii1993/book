@@ -31,6 +31,13 @@ var User = {
                 })
             }
         });
+    },
+    out: function (resp, params) {
+        resp.json({
+            success: session.exit(params.key),
+            method: 'out',
+            data: string.good_bay
+        });
     }
 };
 

@@ -5,14 +5,18 @@
 //import postJson from 'post-json';
 //import request from 'request-json';
 import request from 'xhr-request';
+import cookies from 'js-cookie';
 
 export const send = (sendData, className, method) => dispatch => {
-    console.log("sendData: " , sendData);
+    console.log("sendData: " , {
+        key: cookies.get('key'),
+        data: sendData
+    });
     request('http://localhost:3000/api/'+className+'/'+method, {
         method: 'PUT',
         json: true,
         body: {
-            key: 1,
+            key: cookies.get('key'),
             data: sendData
         },
         responseType: 'json'

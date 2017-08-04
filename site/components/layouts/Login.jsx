@@ -21,8 +21,8 @@ class Login extends Component {
         }
         if(response.success === true && response.method === 'auth'){
             this.props.showMsg({
-                title: '',
-                text: string.hello + ": " + response.data.login,
+                title: string.hello + ": " + response.data.login,
+                text: '',
                 type: 'info'
             });
             this.props.clearData();

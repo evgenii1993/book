@@ -8,6 +8,7 @@ let string = () => {
             singIn: "Войти",
             hello: "Привет",
             error: "Ошибка",
+            good_bay: "До свидания",
 
             //preview
             open_form_preview: "Открыть форму записи",

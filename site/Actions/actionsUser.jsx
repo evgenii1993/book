@@ -7,7 +7,7 @@ export const sessionStart = user => dispatch => {
     });
 };
 
-export const sessionExit = user => dispatch => {
+export const sessionExit = () => dispatch => {
     dispatch({
         type: "SE_USER",
     });

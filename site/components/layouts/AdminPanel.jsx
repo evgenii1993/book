@@ -61,7 +61,7 @@ class AdminPanel extends Component {
                         </div>
                         <div className="AdminPanel__content">
                             <div className="AdminPanel__content-inner">
-                                TEXT
+                                {this.props.children}
                             </div>
                         </div>
                     </div>

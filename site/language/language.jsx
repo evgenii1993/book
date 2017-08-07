@@ -9,6 +9,7 @@ let string = () => {
             hello: "Привет",
             error: "Ошибка",
             good_bay: "До свидания",
+            show: "Показать",
 
             //preview
             open_form_preview: "Открыть форму записи",

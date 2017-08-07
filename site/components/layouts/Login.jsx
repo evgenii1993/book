@@ -44,7 +44,7 @@ class Login extends Component {
                 label: string.login+": "
             },
             {
-                type: 'input',
+                type: 'password',
                 name: 'password',
                 placeholder: string.password,
                 required: true,

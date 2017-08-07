@@ -1,5 +1,14 @@
-import React, {Component}    from 'react';
-import string from "../../language/language";
+
+/**
+ * form fields import
+ */
+import InputForm                from './fields/InputForm';
+import PasswordForm             from './fields/PasswordForm';
+
+//other components
+import React, {Component}       from 'react';
+import string                   from "../../language/language";
+
 
 //noinspection JSAnnotator
 export default class Form extends Component<{}, Props, State>{
@@ -12,7 +21,7 @@ export default class Form extends Component<{}, Props, State>{
         let formData = {};
 
         for (let field in this.refs) {
-            formData[field] = this.refs[field].value;
+            formData[field] = this.refs[field].state.value;
         }
         this.props.send(formData);
         // this.setState({
@@ -40,32 +49,16 @@ export default class Form extends Component<{}, Props, State>{
             switch (field.type){
                 case 'input':
                     fields.push(
-                        <div key={field.name} className="col-xs-12">
-                            <div className="form-group">
-                                <label htmlFor={"form."+field.name}>{field.label}</label>
-                                <input required={field.required}
-                                       placeholder={field.placeholder}
-                                       id={"form."+field.name}
-                                       ref={field.name}
-                                       name={field.name}
-                                       className="form-control"/>
-                            </div>
-                        </div>
+                        <InputForm key={field.name}
+                                   ref={field.name}
+                                   field={field}/>
                     );
                     break;
-                case 'text':
+                case 'password':
                     fields.push(
-                        <div key={field.name} className="col-xs-12">
-                            <div className="form-group">
-                                <label htmlFor={"form."+field.name}>{field.label}</label>
-                                <textarea required={field.required}
-                                          placeholder={field.placeholder}
-                                          id={"form."+field.name}
-                                          ref={field.name}
-                                          name={field.name}
-                                          className="form-control"/>
-                            </div>
-                        </div>
+                        <PasswordForm key={field.name}
+                                      ref={field.name}
+                                      field={field}/>
                     );
                     break;
             }
